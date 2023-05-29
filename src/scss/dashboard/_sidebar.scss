@@ -1,0 +1,28 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+.sidebar {
+  background-color: v.$cyan;
+  padding: 2rem;
+
+  h2 {
+    color: v.$blanco;
+    margin: 0;
+    text-align: center;
+  }
+  .sidebar-nav {
+    margin-top: 5rem;
+
+    a {
+      color: v.$blanco;
+      display: block;
+      margin-bottom: 1.5rem;
+      padding: 0.7rem;
+      transition: all .3s ease;
+      &:hover,
+      &.activo {
+        background-color: darken(v.$cyan, 20%);
+        border-radius: 0.5rem;
+      }
+    }
+  }
+}
