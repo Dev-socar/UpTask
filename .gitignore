@@ -1,4 +1,4 @@
-vendor
+vendor/
 composer.json
 composer.lock
 gulpfile.js
@@ -6,4 +6,4 @@ package-lock.json
 package.json
 usuarios.txt
 .DS_store
-node_modules
+node_modules/
