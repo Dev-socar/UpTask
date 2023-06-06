@@ -3,6 +3,7 @@
 namespace Controllers;
 
 use Model\Proyecto;
+use Model\Tarea;
 use MVC\Router;
 
 class TareaController{
@@ -26,14 +27,17 @@ class TareaController{
                     'mensaje' => 'Hubo un error al agregar la tarea'
                 ];
                 echo json_encode($respuesta);
-               
-            }else{
-                $respuesta = [
-                    'tipo' => 'exito',
-                    'mensaje' => 'Tarea agregada correctamente'
-                ];
-                echo json_encode($respuesta);
+                return;
             }
+            $tarea = new Tarea($_POST);
+            $tarea->proyectoId = $proyecto->id;
+            $resultado = $tarea->guardar();
+            $respuesta = [
+                'tipo' => 'exito',
+                'id' => $resultado['id'],
+                'mensaje' => 'Tarea Creada Correctamente'
+            ];
+            echo json_encode($respuesta);
         }
     }
     public static function actualizar()
