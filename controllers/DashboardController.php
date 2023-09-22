@@ -25,7 +25,6 @@ class DashboardController {
         session_start();
         isAuth();
         $alertas = [];
-
         if ($_SERVER['REQUEST_METHOD'] === 'POST'){
             $proyecto = new Proyecto($_POST);
             
@@ -39,7 +38,6 @@ class DashboardController {
                 $proyecto->propietarioId = $_SESSION['id'];
                 //guardar proyecto
                 $proyecto->guardar();
-
                 //redireccionar
                 header('Location: /proyecto?id=' . $proyecto->url);
 

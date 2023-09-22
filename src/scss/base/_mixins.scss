@@ -30,6 +30,7 @@
   text-align: center;
   display: block;
   width: 100%;
+  border-radius: .5rem;
   @include tablet {
     width: auto;
   }
