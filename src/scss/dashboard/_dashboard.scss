@@ -35,4 +35,11 @@
             border-radius: .5rem;
         }
     }
+
+    .enlace{
+        color: v.$cyan;
+            &:hover{
+                color: darken(v.$cyan, 20%);
+            }
+    }
 }
