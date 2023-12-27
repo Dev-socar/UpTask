@@ -11,14 +11,14 @@
 
   //filtros de busqueda
   const filtros = document.querySelectorAll('#filtros input[type="radio"]');
-  filtros.forEach(radio => {
-    radio.addEventListener('input', filtrarTareas);
+  filtros.forEach((radio) => {
+    radio.addEventListener("input", filtrarTareas);
   });
 
   function filtrarTareas(e) {
     const filtro = e.target.value;
-    if (filtro !== '') {
-      filtradas = tareas.filter(tarea => tarea.estado === filtro);
+    if (filtro !== "") {
+      filtradas = tareas.filter((tarea) => tarea.estado === filtro);
     } else {
       filtradas = [];
     }
@@ -100,23 +100,23 @@
   }
 
   function totalPendientes() {
-    const totalPendientes = tareas.filter(tarea => tarea.estado === "0");
-    const pendientesRadio = document.querySelector('#pendientes');
+    const totalPendientes = tareas.filter((tarea) => tarea.estado === "0");
+    const pendientesRadio = document.querySelector("#pendientes");
     if (totalPendientes.length === 0) {
       pendientesRadio.disabled = true;
     } else {
       pendientesRadio.disabled = false;
     }
   }
-    function totalCompletas() {
-      const totalCompletas = tareas.filter((tarea) => tarea.estado === "1");
-      const completasRadio = document.querySelector("#completadas");
-      if (totalCompletas.length === 0) {
-        completasRadio.disabled = true;
-      } else {
-        completasRadio.disabled = false;
-      }
+  function totalCompletas() {
+    const totalCompletas = tareas.filter((tarea) => tarea.estado === "1");
+    const completasRadio = document.querySelector("#completadas");
+    if (totalCompletas.length === 0) {
+      completasRadio.disabled = true;
+    } else {
+      completasRadio.disabled = false;
     }
+  }
 
   function mostrarFormulario(editar = false, tarea = {}) {
     const modal = document.createElement("DIV");
@@ -167,16 +167,16 @@
         }, 500);
       }
       if (e.target.classList.contains("submit-nueva-tarea")) {
-         const nombreTarea = document.querySelector("#tarea").value.trim();
-         if (nombreTarea === "") {
-           //Mostrar una alerta de error
-           mostrarAlerta(
-             "El nombre de la tarea es Obligatorio",
-             "error",
-             document.querySelector(".formulario legend")
-           );
-           return;
-         }
+        const nombreTarea = document.querySelector("#tarea").value.trim();
+        if (nombreTarea === "") {
+          //Mostrar una alerta de error
+          mostrarAlerta(
+            "El nombre de la tarea es Obligatorio",
+            "error",
+            document.querySelector(".formulario legend")
+          );
+          return;
+        }
         if (editar) {
           //Edita una tarea existente
           tarea.nombre = nombreTarea;
@@ -221,7 +221,7 @@
     datos.append("proyectoId", obtenerProyecto());
 
     try {
-      const url = "http://localhost:8000/api/tarea";
+      const url = "http://localhost:3000/api/tarea";
       const respuesta = await fetch(url, {
         method: "POST",
         body: datos,
@@ -271,7 +271,7 @@
     //   console.log(valor);
     // }
     try {
-      const url = "http://localhost:8000/api/tarea/actualizar";
+      const url = "http://localhost:3000/api/tarea/actualizar";
       const respuesta = await fetch(url, {
         method: "POST",
         body: datos,
@@ -282,7 +282,7 @@
         if (modal) {
           modal.remove();
         }
-        
+
         Swal.fire({
           position: "center",
           icon: "success",
@@ -327,7 +327,7 @@
     datos.append("proyectoId", obtenerProyecto());
 
     try {
-      const url = "http://localhost:8000/api/tarea/eliminar";
+      const url = "http://localhost:3000/api/tarea/eliminar";
       const respuesta = await fetch(url, {
         method: "POST",
         body: datos,
